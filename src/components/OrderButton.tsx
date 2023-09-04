@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux"
 import { RootState } from "../redux/store"
-import { typeProduct } from "../types/types"
+
 
 
 
@@ -13,3 +13,5 @@ const OrderButton = () => {
     return(<button className="btn-order">place an order: 
     <span>${total}</span></button>)
 }
+
+export default OrderButton

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import {typeCategory, typeProduct } from '../types/types'
-
+import mockDb from "../mockDb.json"
 interface MainStates {
     currentAddress: string,
     cart: typeProduct[],
@@ -10,9 +10,9 @@ interface MainStates {
 
 
 const initialState: MainStates = {
-    currentAddress: "",
+    currentAddress: "304 Austin Ave, Brownwood, TX 76801, USA",
     cart: [],
-    categories: []
+    categories: mockDb.data
 }
 
 export const mainSlice = createSlice({

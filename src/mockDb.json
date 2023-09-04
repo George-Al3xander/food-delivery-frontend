@@ -1,0 +1,144 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "name": "pizza",
+            "id": "c1",
+            "products": [
+                {"name": "pizza 1",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 12,
+                "weight": 120,
+                "img": "https://img.freepik.com/premium-photo/pizza-isolate-white-background-generative-ai_74760-2619.jpg",
+                "id": "p1",
+                "category": "pizza"
+                },
+                {"name": "pizza 2",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 12,
+                "weight": 120,
+                "img": "https://img.freepik.com/premium-photo/pizza-isolate-white-background-generative-ai_74760-2619.jpg",
+                "id": "p2",
+                "category": "pizza"
+                },
+                {"name": "pizza 3",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 12,
+                "weight": 120,
+                "img": "https://img.freepik.com/premium-photo/pizza-isolate-white-background-generative-ai_74760-2619.jpg",
+                "id": "p3",
+                "category": "pizza"
+                },
+                {"name": "pizza 4",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 12,
+                "weight": 120,
+                "img": "https://img.freepik.com/premium-photo/pizza-isolate-white-background-generative-ai_74760-2619.jpg",
+                "id": "p4",
+                "category": "pizza"
+                },
+                {"name": "pizza 5",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 12,
+                "weight": 120,
+                "img": "https://img.freepik.com/premium-photo/pizza-isolate-white-background-generative-ai_74760-2619.jpg",
+                "id": "p5",
+                "category": "pizza"
+                }
+            ]
+        },
+        {
+            "name": "sushi",
+            "id": "c2",
+            "products": [
+                {"name": "sushi 1",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 23,
+                "weight": 230,
+                "img": "https://img.freepik.com/premium-photo/set-sushi-rolls-with-eel-salmon-avocado-cucumber-nori-leaves-cream-cheese-inside-isolated-white_85601-187.jpg",
+                "id": "s1",
+                "category": "sushi"
+                },
+                {"name": "sushi 2",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 23,
+                "weight": 230,
+                "img": "https://img.freepik.com/premium-photo/set-sushi-rolls-with-eel-salmon-avocado-cucumber-nori-leaves-cream-cheese-inside-isolated-white_85601-187.jpg",
+                "id": "s2",
+                "category": "sushi"
+                },
+                {"name": "sushi 3",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 23,
+                "weight": 230,
+                "img": "https://img.freepik.com/premium-photo/set-sushi-rolls-with-eel-salmon-avocado-cucumber-nori-leaves-cream-cheese-inside-isolated-white_85601-187.jpg",
+                "id": "s3",
+                "category": "sushi"
+                },
+                {"name": "sushi 4",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 23,
+                "weight": 230,
+                "img": "https://img.freepik.com/premium-photo/set-sushi-rolls-with-eel-salmon-avocado-cucumber-nori-leaves-cream-cheese-inside-isolated-white_85601-187.jpg",
+                "id": "s4",
+                "category": "sushi"
+                },
+                {"name": "sushi 5",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 23,
+                "weight": 230,
+                "img": "https://img.freepik.com/premium-photo/set-sushi-rolls-with-eel-salmon-avocado-cucumber-nori-leaves-cream-cheese-inside-isolated-white_85601-187.jpg",
+                "id": "s5",
+                "category": "sushi"
+                }
+            ]
+        },
+        {
+            "name": "burger",
+            "id": "c3",
+            "products": [
+                {"name": "burger 1",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 16,
+                "weight": 160,
+                "img": "https://img.freepik.com/premium-photo/beef-burger-isolated-illustration-generative-ai_115919-4712.jpg",
+                "id": "s1",
+                "category": "burger"
+                },
+                {"name": "burger 2",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 16,
+                "weight": 160,
+                "img": "https://img.freepik.com/premium-photo/beef-burger-isolated-illustration-generative-ai_115919-4712.jpg",
+                "id": "s2",
+                "category": "burger"
+                },
+                {"name": "burger 3",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 16,
+                "weight": 160,
+                "img": "https://img.freepik.com/premium-photo/beef-burger-isolated-illustration-generative-ai_115919-4712.jpg",
+                "id": "s3",
+                "category": "burger"
+                },
+                {"name": "burger 4",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 16,
+                "weight": 160,
+                "img": "https://img.freepik.com/premium-photo/beef-burger-isolated-illustration-generative-ai_115919-4712.jpg",
+                "id": "s4",
+                "category": "burger"
+                },
+                {"name": "burger 5",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, fugit laborum impedit voluptatem voluptatum nisi atque dolores nesciunt rem quibusdam assumenda dolore. Unde incidunt, doloremque et distinctio alias eum natus recusandae molestiae exercitationem, quasi pariatur?",
+                "price": 16,
+                "weight": 160,
+                "img": "https://img.freepik.com/premium-photo/beef-burger-isolated-illustration-generative-ai_115919-4712.jpg",
+                "id": "s5",
+                "category": "burger"
+                }
+            ]
+        }
+    
+    ]
+}

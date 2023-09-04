@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../redux/store";
-
+import logo from "../assets/images/logo.png"
 
 
 const Header = () => {
     const dispatch = useDispatch();
     const {currentAddress} = useSelector((state: RootState) => state.mainStates)
     return(<header>
-        <h1>Texas Toast</h1>
-        <p>{currentAddress.length > 0 ? currentAddress : "Select location"}</p>
-        <button>Login</button>
+        <h1 className="logo">Texas Toast</h1>
+        <p className="address">{currentAddress.length > 0 ? currentAddress : "Select location"}</p>
+        <div><button>Login</button></div>
     </header>)
 }
 
