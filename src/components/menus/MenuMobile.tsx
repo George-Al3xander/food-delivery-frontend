@@ -2,7 +2,7 @@ import {useSelector} from "react-redux"
 import { RootState } from "../../redux/store"
 import {useEffect, useState} from "react"
 
-const MenuDesktop = () => {
+const MenuMobile = () => {
     const {categories} = useSelector((state: RootState) => state.mainStates)
       
     const handleClickScroll = (id: string) => {
@@ -45,8 +45,7 @@ const MenuDesktop = () => {
     },[offset])
     
 
-    return(<nav className="menu menu-desktop">
-        <h1>Menu</h1>
+    return(<nav className="menu menu-mobile">        
         <ul>
             {categories.map((category) => {
                 return <li className={category.id} onClick={() => {
@@ -57,7 +56,7 @@ const MenuDesktop = () => {
     </nav>)
 }
 
-export default MenuDesktop
+export default MenuMobile
 
 
 

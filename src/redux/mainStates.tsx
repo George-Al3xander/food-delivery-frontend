@@ -6,13 +6,15 @@ interface MainStates {
     currentAddress: string,
     cart: typeProduct[],
     categories: typeCategory[],
+    paddingBottomContainer: number
 }
 
 
 const initialState: MainStates = {
     currentAddress: "304 Austin Ave, Brownwood, TX 76801, USA",
     cart: [],
-    categories: mockDb.data
+    categories: mockDb.data,
+    paddingBottomContainer: 0
 }
 
 export const mainSlice = createSlice({
@@ -28,10 +30,13 @@ export const mainSlice = createSlice({
         setCategories: (state, action: PayloadAction<{categories: typeCategory[]}>) => {
             state.categories = action.payload.categories
         },
+        setPaddingBottomContainer: (state, action: PayloadAction<{padding: number}>) => {
+            state.paddingBottomContainer = action.payload.padding
+        },
     }
 })
 
-export const {setCurrentAddress, setCart} = mainSlice.actions
+export const {setCurrentAddress, setCart, setPaddingBottomContainer} = mainSlice.actions
 
 export const selectInfo = (state: RootState) => state.mainStates
 export default mainSlice.reducer

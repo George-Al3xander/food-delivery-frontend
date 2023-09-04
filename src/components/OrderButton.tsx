@@ -10,7 +10,7 @@ const OrderButton = () => {
     const total   = prices.reduce((prev, curr) => {
         return prev + curr
     })
-    return(<button className="btn-order">place an order: 
+    return(<button className="btn-order">place an order for: 
     <span>${total}</span></button>)
 }
 
