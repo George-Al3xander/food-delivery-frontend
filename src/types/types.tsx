@@ -5,7 +5,9 @@ export type typeProduct = {
     weight: number,
     img: string,
     id: string,
-    category: string
+    category: string,
+    quantity?: number
+
 }
 
 export type typeCategory = {

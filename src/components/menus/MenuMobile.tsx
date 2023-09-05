@@ -7,7 +7,7 @@ const MenuMobile = () => {
       
     const handleClickScroll = (id: string) => {
         const element  = document.getElementById(id);
-        if (element) {            
+        if (element) { 
             element.scrollIntoView({ behavior: 'smooth' });
         }
     }
@@ -31,7 +31,7 @@ const MenuMobile = () => {
             if(section) {
                 const sectionTop = section.offsetTop
                 //const sectionHeight = section.clientHeight
-                if(offset >= sectionTop - 48) {
+                if(offset >= sectionTop - 120) {
                     current = section.getAttribute("id")!
                 }               
             }

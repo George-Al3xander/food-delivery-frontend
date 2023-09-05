@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { typeCategory } from "../types/types"
-import { setPaddingBottomContainer } from "../redux/mainStates";
+import { setCurrentProductDisplay, setCurrentProductDisplayStatus, setPaddingBottomContainer } from "../redux/mainStates";
 import {useEffect, useState, useRef} from "react"
 
 
@@ -43,7 +43,10 @@ const Category = ({category, isLast, isSearch}: {category: typeCategory, isLast:
         {isSearch ? null : <h2>{category.name}</h2>  }      
         <ul className="category-products">
             {category.products.map((product) => {
-                return <li id={product.id} key={product.id}>
+                return <li onClick={() => {
+                    dispatch(setCurrentProductDisplay({product}))
+                    dispatch(setCurrentProductDisplayStatus({status: true}))
+                }} id={product.id} key={product.id}>
                     <div className="div-img-product">
                         <img src={product.img} alt={product.name} />
                         <span className="product-weight-display">{product.weight}g</span>
