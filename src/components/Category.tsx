@@ -43,7 +43,7 @@ const Category = ({category, isLast, isSearch}: {category: typeCategory, isLast:
         {isSearch ? null : <h2>{category.name}</h2>  }      
         <ul className="category-products">
             {category.products.map((product) => {
-                return <li onClick={() => {
+                return <li className="product-container" onClick={() => {
                     dispatch(setCurrentProductDisplay({product}))
                     dispatch(setCurrentProductDisplayStatus({status: true}))
                 }} id={product.id} key={product.id}>

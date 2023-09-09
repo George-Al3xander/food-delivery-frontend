@@ -8,7 +8,8 @@ interface MainStates {
     categories: typeCategory[],
     paddingBottomContainer: number,
     currentDisplayProduct: typeProduct,
-    currentDisplayProductStatus: boolean
+    currentDisplayProductStatus: boolean,
+    cartDisplayStatus: boolean
 }
 
 
@@ -18,7 +19,8 @@ const initialState: MainStates = {
     categories: mockDb.data,
     paddingBottomContainer: 0,
     currentDisplayProduct: {name: "", description: "",price: 0, weight: 0, img: "", id: "",category: ""},
-    currentDisplayProductStatus: false
+    currentDisplayProductStatus: false,
+    cartDisplayStatus: false
 }
 
 export const mainSlice = createSlice({
@@ -43,10 +45,13 @@ export const mainSlice = createSlice({
         setCurrentProductDisplayStatus: (state, action: PayloadAction<{status: boolean}>) => {
             state.currentDisplayProductStatus = action.payload.status
         },
+        setCartDisplayStatus: (state, action: PayloadAction<{status: boolean}>) => {
+            state.cartDisplayStatus = action.payload.status
+        },
     }
 })
 
-export const {setCurrentAddress, setCart, setPaddingBottomContainer, setCurrentProductDisplay, setCurrentProductDisplayStatus} = mainSlice.actions
+export const {setCurrentAddress, setCart, setPaddingBottomContainer, setCurrentProductDisplay, setCurrentProductDisplayStatus, setCartDisplayStatus} = mainSlice.actions
 
 export const selectInfo = (state: RootState) => state.mainStates
 export default mainSlice.reducer

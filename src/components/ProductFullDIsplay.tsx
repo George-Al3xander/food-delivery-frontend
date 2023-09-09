@@ -28,35 +28,20 @@ const ProductFullDisplay = () => {
         const newCart = {...product,quantity}
         const coond = cart.some((item) => {
             return item.id == product.id
-        })
-        
-        if(coond) {
-            let cartQuantity = 0;
-            let tempArray = [];
-
-            for(let item of cart) {
-                if(item.id == product.id) {
-                    cartQuantity  = item.quantity!
+        });        
+        if(coond) {           
+            let tempArray = cart.map((item) => {
+                if(item.id == product.id && item.quantity) {
+                   return {...product, quantity: item.quantity + quantity}
+                } else {
+                    return item
                 }
-            }
-            
-            const newItem = {...product, quantity: cartQuantity + quantity}
-            
-            for(let item of cart) {
-                if(item.id != product.id) {
-                    tempArray.push(item)
-                }
-            }
-            tempArray.push(newItem);
-            dispatch(setCart({cart: tempArray}))           
-
-            
-                
+            });
+            dispatch(setCart({cart: tempArray}))                   
         } else {
             dispatch(setCart({cart: [...cart,newCart]}))           
-        }
-        console.log(cart)
-        // closeMenu();
+        }      
+        closeMenu();
     }
 
     return(<div onClick={(e) => {
@@ -65,9 +50,10 @@ const ProductFullDisplay = () => {
            dispatch(setCurrentProductDisplayStatus({status: false}));
         }
         
-    }} id="bg" className="current-product-bg">
+    }} id="bg" className="current-product-bg fullscreen-bg">
         <div ref={divRef} className="current-product popout" id={product.id} key={product.id}>
                 <div className="current-product-img">
+                <svg onClick={closeMenu} xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
                     <img src={product.img} alt={product.name} />
                 </div>
                 <div className="current-product-info-wrapper">
