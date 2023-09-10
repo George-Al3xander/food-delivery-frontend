@@ -9,13 +9,15 @@ import Footer from './components/Footer'
 import ProductFullDisplay from './components/ProductFullDIsplay'
 import Cart from './components/Cart'
 import OrderPage from './components/OrderPage'
+import Map from './components/Map'
 
-
-function App() {
+function App() {  
   const {cart,paddingBottomContainer, currentDisplayProductStatus, cartDisplayStatus} = useSelector((state: RootState) => state.mainStates)
   const location = useLocation();
+
   return (
-    <>      
+    <>   
+    <Map />        
       {(location.pathname != "/order" &&cart.length > 0) ? <OrderButton /> : null} 
       <Header />    
       <Routes>

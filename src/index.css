@@ -729,6 +729,8 @@ textarea {
   top: 2%;
 }
 
+#map, .leaflet-container { height: 180px; }
+
 
 
 @media (max-width: 40rem) {  
