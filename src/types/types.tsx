@@ -31,3 +31,23 @@ export type typeTotalOrder = {
     order: typeProduct[]  
 }
 
+
+export type typeStreet = {
+    address: {        
+        house_number: number,
+        road: string,
+        borough: string,
+        city: string,
+        municipality: string,
+        district: string,
+        state: string,       
+        postcode: number,
+        country: string,
+        country_code: string       
+    },
+    lat: number,
+    lon: number,
+    display_name: string,
+    place_id: number
+}
+

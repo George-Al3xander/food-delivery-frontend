@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
-import {typeCategory, typeProduct } from '../types/types'
+import {typeCategory, typeProduct, typeStreet } from '../types/types'
 import mockDb from "../mockDb.json"
 interface MainStates {
-    currentAddress: string,
+    currentAddress: string | typeStreet,
     cart: typeProduct[],
     categories: typeCategory[],
     paddingBottomContainer: number,
@@ -14,7 +14,7 @@ interface MainStates {
 
 
 const initialState: MainStates = {
-    currentAddress: "304 Austin Ave, Brownwood, TX 76801, USA",
+    currentAddress: "",
     cart: [],
     categories: mockDb.data,
     paddingBottomContainer: 0,
@@ -27,7 +27,7 @@ export const mainSlice = createSlice({
     name: "mainStates",
     initialState,
     reducers: {
-        setCurrentAddress: (state, action: PayloadAction<{address: string}>) => {
+        setCurrentAddress: (state, action: PayloadAction<{address: typeStreet}>) => {
             state.currentAddress = action.payload.address
         },
         setCart: (state, action: PayloadAction<{cart: typeProduct[]}>) => {

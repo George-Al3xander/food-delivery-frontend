@@ -14,7 +14,7 @@ import Map from './components/Map'
 function App() {  
   const {cart,paddingBottomContainer, currentDisplayProductStatus, cartDisplayStatus} = useSelector((state: RootState) => state.mainStates)
   const location = useLocation();
-
+ 
   return (
     <>   
     <Map />        
