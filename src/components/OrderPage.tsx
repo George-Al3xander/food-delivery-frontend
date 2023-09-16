@@ -33,7 +33,7 @@ const OrderPage = () => {
                     <legend>Delivery</legend>
                     <span className="input-wrapper">
                         <h3>Your address*</h3>
-                        <button>{currentAddress}</button>
+                        <button>{currentAddress.display_name}</button>
                     </span>                                          
                         <ul className="address-additional">
                             <li>

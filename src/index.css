@@ -733,7 +733,13 @@ textarea {
   top: 2%;
 }
 
-.map, .leaflet-container { height: 20rem; width: 100%; }
+.map, .leaflet-container {
+   height: 20rem;  
+}
+
+.leaflet-container {
+  min-width: 60%;
+}
 
 .map-container{
   width: min(90%, 50rem);
@@ -746,17 +752,27 @@ textarea {
 }
 
 .map-container-body {
-  justify-content: space-between;  
+  justify-content: space-between;   
 }
 
-.map-container-body > div {
-  max-width: 50%; 
+
+.search-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
 }
+
+
+
+
 
 .map-container input{
   background-color: var(--clr-secondary);
   padding: 1rem;
   border-radius: .5rem;
+  width: 100%;
+  overflow: hidden;
 }
 
 
@@ -778,20 +794,32 @@ textarea {
   max-height: 10rem;
   padding: .5rem;
   overflow-y: scroll;
-  border-radius: 1rem;
+  overflow-x: hidden;
+  border-radius: 1rem;  
+  max-width: 100%;
+  margin: 0 !important;
+  position: absolute;
+ 
+}
+
+.map-container-header svg:hover, .address:hover {
+  cursor: pointer;
+  opacity: .7;
 }
 
 .search-results li { 
-  margin: .5rem;
-  max-width: 100%;
+  margin: .5rem;  
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 20ch;
 }
 
 .search-results li:hover {
   color: var(--clr-primary);
   cursor: pointer;
 }
+
 
 
 @media (max-width: 40rem) {  
@@ -801,7 +829,7 @@ textarea {
 }
 
 
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .current-product-img svg {
     display: inline
   }

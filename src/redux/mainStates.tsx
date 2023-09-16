@@ -3,24 +3,39 @@ import type { RootState } from './store'
 import {typeCategory, typeProduct, typeStreet } from '../types/types'
 import mockDb from "../mockDb.json"
 interface MainStates {
-    currentAddress: string | typeStreet,
+    currentAddress: typeStreet,
     cart: typeProduct[],
     categories: typeCategory[],
     paddingBottomContainer: number,
     currentDisplayProduct: typeProduct,
     currentDisplayProductStatus: boolean,
-    cartDisplayStatus: boolean
+    cartDisplayStatus: boolean,
+    mapDisplayStatus: boolean,
 }
 
 
 const initialState: MainStates = {
-    currentAddress: "",
+    currentAddress: {
+        place_id: 103702247,     
+        lat: 42.3636176,
+        lon: 1.8713459,        
+        display_name: 'Das, Cerdanya, Girona, Catalonia, Spain',
+        address: {
+            village: 'Das',
+            county: 'Cerdanya',
+            state_district: 'Girona',            
+            state: 'Catalonia',            
+            country: 'Spain',
+            country_code: 'es'
+        },       
+    },
     cart: [],
     categories: mockDb.data,
     paddingBottomContainer: 0,
     currentDisplayProduct: {name: "", description: "",price: 0, weight: 0, img: "", id: "",category: ""},
     currentDisplayProductStatus: false,
-    cartDisplayStatus: false
+    cartDisplayStatus: false,
+    mapDisplayStatus: false
 }
 
 export const mainSlice = createSlice({
@@ -48,10 +63,13 @@ export const mainSlice = createSlice({
         setCartDisplayStatus: (state, action: PayloadAction<{status: boolean}>) => {
             state.cartDisplayStatus = action.payload.status
         },
+        setMapDisplayStatus: (state, action: PayloadAction<{status: boolean}>) => {
+            state.mapDisplayStatus = action.payload.status
+        },
     }
 })
 
-export const {setCurrentAddress, setCart, setPaddingBottomContainer, setCurrentProductDisplay, setCurrentProductDisplayStatus, setCartDisplayStatus} = mainSlice.actions
+export const {setCurrentAddress, setCart, setPaddingBottomContainer, setCurrentProductDisplay, setCurrentProductDisplayStatus, setCartDisplayStatus, setMapDisplayStatus} = mainSlice.actions
 
 export const selectInfo = (state: RootState) => state.mainStates
 export default mainSlice.reducer

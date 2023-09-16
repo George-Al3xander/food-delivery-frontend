@@ -45,13 +45,13 @@ const ProductFullDisplay = () => {
     }
 
     return(<div onClick={(e) => {
-        const target = e.target as Element;
-        if(target.classList.contains("product-full-display-content")) {
-           dispatch(setCurrentProductDisplayStatus({status: false}));
-        }
-        
+        // const target = e.target as Element;
+        // if(target.classList.contains("product-full-display-content")) {
+        //    dispatch(setCurrentProductDisplayStatus({status: false}));
+        // }
+        closeMenu();        
     }} id="bg" className="current-product-bg fullscreen-bg">
-        <div ref={divRef} className="current-product popout" id={product.id} key={product.id}>
+        <div onClick={(e) => e.stopPropagation()} ref={divRef} className="current-product popout" id={product.id} key={product.id}>
                 <div className="current-product-img">
                 <svg onClick={closeMenu} xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
                     <img src={product.img} alt={product.name} />

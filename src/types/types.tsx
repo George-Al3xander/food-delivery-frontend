@@ -34,16 +34,19 @@ export type typeTotalOrder = {
 
 export type typeStreet = {
     address: {        
-        house_number: number,
-        road: string,
-        borough: string,
-        city: string,
-        municipality: string,
-        district: string,
-        state: string,       
-        postcode: number,
-        country: string,
-        country_code: string       
+        house_number?: number,
+        village?: string,
+        state_district?: string,
+        county: string,
+        road?: string,
+        borough?: string,
+        city?: string,
+        municipality?: string,
+        district?: string,
+        state?: string,       
+        postcode?: number,
+        country?: string,
+        country_code?: string       
     },
     lat: number,
     lon: number,

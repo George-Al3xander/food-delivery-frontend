@@ -12,12 +12,12 @@ import OrderPage from './components/OrderPage'
 import Map from './components/Map'
 
 function App() {  
-  const {cart,paddingBottomContainer, currentDisplayProductStatus, cartDisplayStatus} = useSelector((state: RootState) => state.mainStates)
+  const {cart,paddingBottomContainer, currentDisplayProductStatus, cartDisplayStatus, mapDisplayStatus} = useSelector((state: RootState) => state.mainStates)
   const location = useLocation();
  
   return (
     <>   
-    <Map />        
+      {mapDisplayStatus ? <Map />  : null}             
       {(location.pathname != "/order" &&cart.length > 0) ? <OrderButton /> : null} 
       <Header />    
       <Routes>
