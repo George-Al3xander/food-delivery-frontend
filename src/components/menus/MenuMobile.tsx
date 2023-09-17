@@ -14,7 +14,7 @@ const MenuMobile = () => {
     const [offset, setOffset] = useState(0);
 
     const sections = document.querySelectorAll<HTMLElement>("section");
-    const navLi = document.querySelectorAll("nav ul li");
+    const navLi = document.querySelectorAll(".menu-mobile ul li");
    
     const handleScroll = () => {
         setOffset(window.scrollY)
@@ -45,10 +45,10 @@ const MenuMobile = () => {
     },[offset])
     
 
-    return(<nav className="menu menu-mobile">        
-        <ul>
+    return(<nav className="md:hidden menu menu-mobile sticky top-[-10px] bg-secondary z-40 p-5  left-[-10%] max-w-[100%] overflow-x-scroll">        
+        <ul className="flex gap-3">
             {categories.map((category) => {
-                return <li className={category.id} onClick={() => {
+                return <li className={`${category.id} uppercase font-medium text-lg p-1 rounded transition duration-500 hover:cursor-pointer hover:opacity-60`} onClick={() => {
                     handleClickScroll(category.id)
                 }} key={category.id}>{category.name}</li>
             })}

@@ -5,10 +5,10 @@ import {useEffect, useRef} from "react"
 import L from "leaflet"
 import { typeStreet } from "../types/types";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentAddress, setMapDisplayStatus } from "../redux/mainStates";
+import {  setMapDisplayStatus } from "../redux/mainStates";
 import { RootState } from "../redux/store";
 
-function ResetCenterView({position, setPosition, getStreetByLatLng}: {position: {lat: number, lng: number}, setPosition: any, getStreetByLatLng: Function}) {  
+function ResetCenterView({position,  getStreetByLatLng}: {position: {lat: number, lng: number}, setPosition: any, getStreetByLatLng: Function}) {  
   const map = useMap();
   const lat = position.lat;
   const lng = position.lng;
@@ -43,8 +43,7 @@ function ResetCenterView({position, setPosition, getStreetByLatLng}: {position: 
 }
 
 const Map = () => {
-    const addressRef = useRef<HTMLInputElement>(null)!;
-    const inputAddress = addressRef.current; 
+    const addressRef = useRef<HTMLInputElement>(null)!;    
 
     const dispatch = useDispatch();
     const [searchResults, setSearchResults] = useState<typeStreet[]>([])

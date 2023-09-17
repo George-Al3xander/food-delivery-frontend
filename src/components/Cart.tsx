@@ -51,22 +51,24 @@ const Cart = () =>{
         dispatch(setCart({cart: tempArray}));
     }
 
-    return(<div className="fullscreen-bg">
-        <div className="cart">
-            <div className="cart-header">
-                <h2>Cart</h2>
+    return(<div className="fixed z-50 top-0 bg-[rgba(0,0,0,50%)] h-[100vh] w-[100%]">
+        <div className="bg-accent max-w-[40%] h-[100%] ml-auto p-4">
+            <div className="flex items-center justify-between border-b-[1px] py-2">
+                <h2 className="font-medium text-lg">Cart</h2>
                 <svg onClick={() => {
                    dispatch(setCartDisplayStatus({status: false}))
-                }}  xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
+                }} 
+                className="fill-primary"
+                xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
             </div>
-            <ul className="cart-body">
+            <ul className="flex flex-col">
                 {cart.map((item) => {
-                    return <li className="product-container">
-                        <span className="div-img-product">
-                            <img src={item.img} alt={item.name + " img"} />
+                    return <li className="flex w-[100%]">
+                        <span className="max-w-[40%]">
+                            <img className="object-cover h-[100%] w-[100%]" src={item.img} alt={item.name + " img"} />
                         </span>
-                            <div className="product-main-info">
-                            <h2>{item.name} <svg onClick={() => {
+                            <div className="capitalize">
+                            <h2 className="flex items-center justify-between">{item.name} <svg onClick={() => {
                                 removeFromCart(item)
                             }}  xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="25"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg></h2>
                                 <div className="cart-product-main-info">

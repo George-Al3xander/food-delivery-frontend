@@ -15,7 +15,7 @@ const OrderButton = () => {
     return(<button onClick={() => {
         console.log(1)
         dispatch(setCartDisplayStatus({status: true}))
-    }} className="btn-total btn-total-main">place an order for: 
+    }} className="fixed font-semibold right-[5%]  bg-primary text-accent p-4 rounded-xl flex justify-between  hover:scale-105 transition-all duration-500 bottom-4  w-[90%] z-20 md:right-4 md:w-[40%]">Place an order for: 
     <span>${total}</span></button>)
 }
 

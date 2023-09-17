@@ -14,7 +14,7 @@ const MenuDesktop = () => {
     const [offset, setOffset] = useState(0);
 
     const sections = document.querySelectorAll<HTMLElement>("section");
-    const navLi = document.querySelectorAll("nav ul li");
+    const navLi = document.querySelectorAll(".menu-desktop ul li");    
    
     const handleScroll = () => {
         setOffset(window.scrollY)
@@ -37,7 +37,7 @@ const MenuDesktop = () => {
             }
         })
         navLi.forEach((li) => {          
-            li.classList.remove("active");
+            li.classList.remove("active");           
             if(li.classList.contains(current)) {                          
                 li.classList.add("active")
             }
@@ -45,11 +45,11 @@ const MenuDesktop = () => {
     },[offset])
     
 
-    return(<nav className="menu menu-desktop">
-        <h1>Menu</h1>
-        <ul>
+    return(<nav className="menu-desktop hidden md:inline  sticky top-0">
+        <h1 className="text-4xl  font-bold pb-10">Menu</h1>
+        <ul className="flex gap-4 flex-col">
             {categories.map((category) => {
-                return <li className={category.id} onClick={() => {
+                return <li  className={`${category.id} uppercase font-medium text-lg transition duration-500 hover:cursor-pointer hover:opacity-60`} onClick={() => {
                     handleClickScroll(category.id)
                 }} key={category.id}>{category.name}</li>
             })}

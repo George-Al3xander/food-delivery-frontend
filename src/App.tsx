@@ -10,6 +10,7 @@ import ProductFullDisplay from './components/ProductFullDIsplay'
 import Cart from './components/Cart'
 import OrderPage from './components/OrderPage'
 import Map from './components/Map'
+import MenuMobile from './components/menus/MenuMobile'
 
 function App() {  
   const {cart,paddingBottomContainer, currentDisplayProductStatus, cartDisplayStatus, mapDisplayStatus} = useSelector((state: RootState) => state.mainStates)
@@ -21,10 +22,11 @@ function App() {
       {(location.pathname != "/order" &&cart.length > 0) ? <OrderButton /> : null} 
       <Header />    
       <Routes>
-      <Route path='/' element={<div style={{paddingBottom: `${paddingBottomContainer}px`}} className='container'>
+      <Route path='/' element={<div style={{paddingBottom: `${paddingBottomContainer}px`}} className='bg-secondary'>
         {currentDisplayProductStatus ? <ProductFullDisplay /> : null}
         {(cartDisplayStatus == true && cart.length > 0) ? <Cart /> : null}
-        <div className="split">
+          <MenuMobile />
+        <div className="w-[min(90%,60rem)] m-auto py-6  flex items-start gap-4">
           <MenuDesktop />
           <Catalog />  
         </div>  
