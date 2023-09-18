@@ -3,6 +3,7 @@ import { RootState } from "../redux/store"
 import { typeProduct } from "../types/types";
 import { setCart, setCartDisplayStatus } from "../redux/mainStates";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 
 
@@ -13,8 +14,15 @@ const Cart = () =>{
     const total   = prices.reduce((prev, curr) => {
         return prev + curr
     })
-
     const navigate = useNavigate()
+    const divRef = useRef<HTMLDivElement>(null)
+
+    const closeCart = () => {         
+        divRef.current!.classList.add('slide-out');
+        setTimeout(() => {            
+            dispatch(setCartDisplayStatus({status: false}))
+        },400)         
+    }
 
     const reduceOrAddQuantity = (type: string, product: typeProduct) => {        
         if(product.quantity) {
@@ -51,52 +59,56 @@ const Cart = () =>{
         dispatch(setCart({cart: tempArray}));
     }
 
-    return(<div className="fixed z-50 top-0 bg-[rgba(0,0,0,50%)] h-[100vh] w-[100%]">
-        <div className="bg-accent max-w-[40%] h-[100%] ml-auto p-4">
-            <div className="flex items-center justify-between border-b-[1px] py-2">
-                <h2 className="font-medium text-lg">Cart</h2>
-                <svg onClick={() => {
-                   dispatch(setCartDisplayStatus({status: false}))
-                }} 
-                className="fill-primary"
-                xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
-            </div>
-            <ul className="flex flex-col">
-                {cart.map((item) => {
-                    return <li className="flex w-[100%]">
-                        <span className="max-w-[40%]">
-                            <img className="object-cover h-[100%] w-[100%]" src={item.img} alt={item.name + " img"} />
-                        </span>
-                            <div className="capitalize">
-                            <h2 className="flex items-center justify-between">{item.name} <svg onClick={() => {
-                                removeFromCart(item)
-                            }}  xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="25"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg></h2>
-                                <div className="cart-product-main-info">
-                                <span className="price">${item.price}</span>
-                                <div className="btn-quantity">
-                                    <button onClick={() => {
-                                        reduceQuantity(item)
-                                    }} disabled={item.quantity! <= 1 ? true : false }>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M200-446.667v-66.666h560v66.666H200Z"/></svg>
-                                    </button>
-                                    <h3>{item.quantity}</h3>
-                                    <button onClick={() => {
-                                        addQuantity(item)
-                                    }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M446.667-446.667H200v-66.666h246.667V-760h66.666v246.667H760v66.666H513.333V-200h-66.666v-246.667Z"/></svg>
-                                    </button>
+    return(<div onClick={() => closeCart} className="fixed z-50 top-0 bg-[rgba(0,0,0,50%)] h-[100vh] w-[100%]">
+        <div ref={divRef} onClick={(e) => e.stopPropagation()} className="slide-in bg-accent w-[100%] md:max-w-[30rem] h-[100%] ml-auto p-4 flex flex-col justify-between">
+            <div>
+                <div className="flex items-center justify-between border-b-[1px] py-2">
+                    <h2 className="font-medium text-lg">Cart</h2>
+                    <button>
+                        <svg onClick={closeCart}
+                        className="fill-primary"
+                        xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
+                    </button>
+                </div>
+                <ul className="flex flex-col max-h-[50vh] overflow-y-scroll">
+                    {cart.map((item) => {
+                        return <li className="flex w-[100%] py-4 gap-2 border-b-[1px]">
+                            <span className="max-w-[25%]">
+                                <img className="object-cover h-[100%] w-[100%]" src={item.img} alt={item.name + " img"} />
+                            </span>
+                            <div className="capitalize w-[100%] flex flex-col justify-between p-2">
+                                <h2 className="flex items-center justify-between text-lg font-[500]">{item.name} <button>
+                                    <svg onClick={() => {
+                                        removeFromCart(item)
+                                    }} className="opacity-70"  xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" width="25"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
+                                </button></h2>
+                                    <div className="flex items-center justify-between">
+                                    <span className="opacity-70 font-medium text-lg">${item.price}</span>
+                                    <div className="flex fill-primary">
+                                        <button onClick={() => {
+                                            reduceQuantity(item)
+                                        }} disabled={item.quantity! <= 1 ? true : false }>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M200-446.667v-66.666h560v66.666H200Z"/></svg>
+                                        </button>
+                                        <h3 className="font-medium text-xl opacity-60">{item.quantity}</h3>
+                                        <button onClick={() => {
+                                            addQuantity(item)
+                                        }}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M446.667-446.667H200v-66.666h246.667V-760h66.666v246.667H760v66.666H513.333V-200h-66.666v-246.667Z"/></svg>
+                                        </button>
+                                    </div>
+                                    </div>
                                 </div>
-                                </div>                            
-                            </div>
-                    </li>
-                })}
-            </ul>
+                        </li>
+                    })}
+                </ul>
+            </div>
 
-            <div className="cart-footer">              
-                    <p className="total">Total payable: <span>${total}</span></p>
+            <div className="mt-auto p-4">              
+                    <p className="flex justify-between font-semibold">Total payable: <span>${total}</span></p>
                     <button onClick={() => {
                         navigate("/order")
-                    }} className="btn-total btn-total-cart">Order</button>
+                    }} className=" font-semibold right-[5%]  bg-primary text-accent p-4 rounded-xl hover:scale-105 transition-all duration-500 bottom-4 w-[100%] mx-auto text-center mt-8">Order</button>
             </div>
         </div>
     </div>)

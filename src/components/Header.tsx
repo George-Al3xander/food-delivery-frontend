@@ -8,7 +8,7 @@ const Header = () => {
     const location = useLocation()
     const dispatch = useDispatch();   
     const {currentAddress} = useSelector((state: RootState) => state.mainStates)
-    return(<header className="grid grid-cols-3 p-[3%] max-w-6xl text-center">
+    return(<header className="grid grid-cols-3 p-[3%] max-w-6xl text-center mx-auto">
         <h1 id="header-logo" className="text-4xl italic font-bold text-primary">Texas Toast</h1>
         {location.pathname == "/order" ? null : 
         <p  id="header-address" onClick={() => {

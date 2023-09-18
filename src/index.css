@@ -60,3 +60,63 @@ button:disabled {
     80%{-webkit-transform:scale(1.2)}
     to{-webkit-transform:scale(1)}
   }
+
+
+.slide-in {
+    -webkit-animation: slide-in 1s forwards;   
+    animation: slide-in 1s forwards;    
+}
+
+@-webkit-keyframes slide-in {
+  0% {
+    position: absolute;
+    right: -100%;
+    
+  }
+  100% { 
+    right: 0; 
+    position: relative;     
+  }
+}
+
+@keyframes slide-in {
+    0% {
+      position: absolute;
+      right: -100%;
+      
+    }
+    100% { 
+      right: 0; 
+      position: relative;     
+    }
+}
+
+
+.slide-out {
+  -webkit-animation: slide-out 1s forwards;   
+  animation: slide-out 1s forwards;    
+}
+
+@-webkit-keyframes slide-out {
+  0% {
+    right: 0; 
+    position: relative
+    
+  }
+  100% { 
+    position: absolute;
+    right: -100%;   
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    right: 0; 
+    position: relative
+    
+  }
+  100% { 
+    position: absolute;
+    right: -100%;   
+  }
+}
