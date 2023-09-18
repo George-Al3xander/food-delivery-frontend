@@ -21,7 +21,7 @@ const ProductFullDisplay = () => {
         divRef.current!.classList.add('close');
         setTimeout(() => {            
             dispatch(setCurrentProductDisplayStatus({status: false}));
-        },800)         
+        },400)         
     }
 
     const addToCart = () => {

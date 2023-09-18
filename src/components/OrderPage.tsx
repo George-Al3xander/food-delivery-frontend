@@ -15,82 +15,82 @@ const OrderPage = () => {
     
    
     const {currentAddress} = useSelector((state: RootState) => state.mainStates)
-    return(<div className="container">
-        <div className="split">
-            <form  onSubmit={(e) => e.preventDefault()}>
-                <fieldset>
-                    <legend>Personal info</legend>
-                    <span className="input-wrapper">
-                        <h3>Your name*</h3>
-                        <input name="name" placeholder="Enter your name" type="text" />
+    return(<div className="bg-secondary">
+        <div className="w-[min(90%,60rem)] m-auto py-6 flex gap-4 flex-col md:flex-row">
+            <form className="flex flex-col gap-4"  onSubmit={(e) => e.preventDefault()}>
+                <fieldset className="bg-accent rounded-md p-4 flex flex-col">
+                    <legend className="float-left font-medium text-2xl pb-6">Personal info</legend>
+                    <span className="flex flex-col gap-2 pb-4">
+                        <h3 className="opacity-70 font-normal">Your name*</h3>
+                        <input className="bg-secondary p-3 rounded" name="name" placeholder="Enter your name" type="text" />
                     </span>
-                    <span className="input-wrapper">
-                        <h3>Your phone*</h3>
-                        <input name="phone" placeholder="Enter your phone" type="tel" />
+                    <span className="flex flex-col gap-2 pb-4">
+                        <h3 className="opacity-70 font-normal">Your phone*</h3>
+                        <input className="bg-secondary p-3 rounded" name="phone" placeholder="Enter your phone" type="tel" />
                     </span>
                 </fieldset>
-                <fieldset>
-                    <legend>Delivery</legend>
-                    <span className="input-wrapper">
-                        <h3>Your address*</h3>
-                        <button>{currentAddress.display_name}</button>
+                <fieldset className="bg-accent rounded-md p-4 flex flex-col">
+                    <legend className="float-left font-medium text-2xl pb-6">Delivery</legend>
+                    <span className="flex flex-col gap-2 pb-4">
+                        <h3 className="opacity-70 font-normal">Your address*</h3>
+                        <button className="bg-secondary p-3 rounded flex justify-start gap-1 items-center" name="entrance"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>{currentAddress.display_name}</button>
                     </span>                                          
-                        <ul className="address-additional">
-                            <li>
-                                <span className="input-wrapper">
-                                    <h3>Entrance</h3>
-                                    <input name="entrance"  type="text" />
+                        <ul className="grid grid-cols-3 gap-2 md:max-w-[40%]">
+                            <li className="">
+                                <span className="flex flex-col gap-2 pb-4">
+                                    <h3 className="opacity-70 font-normal">Entrance</h3>
+                                    <input className="bg-secondary p-3 rounded" name="entrance"  type="text" />
                                 </span>
                             </li>                            
                             <li>
-                                <span className="input-wrapper">
-                                    <h3>Floor</h3>
-                                    <input name="floor"  type="text" />
+                                <span className="flex flex-col gap-2 pb-4">
+                                    <h3 className="opacity-70 font-normal">Floor</h3>
+                                    <input className="bg-secondary p-3 rounded" name="floor"  type="text" />
                                 </span>
                             </li>
                             <li>
-                                <span className="input-wrapper">
-                                    <h3>Apartment</h3>
-                                    <input name="apartment"  type="text" />
+                                <span className="flex flex-col gap-2 pb-4">
+                                    <h3 className="opacity-70 font-normal">Apartment</h3>
+                                    <input className="bg-secondary p-3 rounded" name="apartment"  type="text" />
                                 </span>
                             </li>
                         </ul>                    
                 </fieldset>
 
-                <fieldset>
-                    <legend>Payment</legend>
+                <fieldset className="bg-accent rounded-md p-4 flex flex-col">
+                    <legend className="float-left font-medium text-2xl pb-6">Payment</legend>
                     <select required name="payment" id="">
                         <option selected={true} disabled >Select payment type</option>
                         <option value="cash">Cash</option>
                         <option value="online">Online</option>
                     </select>
                 </fieldset>
-                <fieldset>
-                    <legend>Additional info</legend>
-                    <textarea placeholder="Additional info" name="additional-info" id="" cols={30} rows={5}></textarea>
+                <fieldset className="bg-accent rounded-md p-4 flex flex-col">
+                    <legend className="float-left font-medium text-2xl pb-6">Additional info</legend>
+                    <textarea  className="border-2 p-2 bg-secondary" placeholder="Additional info" name="additional-info" id="" cols={30} rows={5}></textarea>
                 </fieldset>
             </form>
 
-            <form className="order-conclusion">
-               <fieldset>
-                    <legend>Your order</legend>
+            <form className="rounded-md overflow-hidden w-[100%] md:basis-[40%] bg-accent self-start">
+               <fieldset className="bg-accent  p-4 flex flex-col border-b-[1px]">
+                    <legend className="float-left font-medium text-2xl ">Your order</legend>
                 </fieldset> 
 
-                <fieldset>
+                <fieldset className="bg-accent  p-4 flex flex-col">
                 <ul className="order-conclusion-products">
                     {cart.map((item) => {
-                        return <li>
-                            <div><span>{item.name}</span><span>x {item.quantity}</span></div>
-                            <div><span className="weight">{item.weight}g</span><span>${item.price}</span></div>
+                        return <li className="flex flex-col gap-2 border-b-2 py-2 font-medium">
+                            <div className="flex justify-between"><span className="capitalize">{item.name}</span><span>x {item.quantity}</span></div>
+                            <div className="flex justify-between"><span className="opacity-60">{item.weight}g</span><span>${item.price}</span></div>
                         </li>
                     })}
                 </ul>
                 </fieldset>
                 
-                <div className="order-footer">
-                    <p className="total">Total payable: <span>${total}</span></p>                   
-                    <button className="btn-total btn-total-cart">Checkout</button>
-                    <button onClick={(e)=> {
+                <div className="p-4 flex flex-col gap-3">
+                    <p className="flex justify-between font-semibold">Total payable: <span>${total}</span></p>                   
+                    <button className="font-semibold right-[5%]  bg-primary text-accent p-4 rounded-xl hover:scale-105 transition-all duration-500 bottom-4 w-[100%] mx-auto text-center mt-8">Checkout</button>
+                    <button className="text-primary font-medium hover:opacity-60" onClick={(e)=> {
                         e.preventDefault();
                         navigate("/")
                     }}>Back to menu</button>

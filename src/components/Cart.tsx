@@ -21,7 +21,7 @@ const Cart = () =>{
         divRef.current!.classList.add('slide-out');
         setTimeout(() => {            
             dispatch(setCartDisplayStatus({status: false}))
-        },400)         
+        },850)         
     }
 
     const reduceOrAddQuantity = (type: string, product: typeProduct) => {        
