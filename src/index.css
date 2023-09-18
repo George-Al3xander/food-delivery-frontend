@@ -97,6 +97,16 @@ button:disabled {
   animation: slide-out 1s forwards;    
 }
 
+.leaflet-container {
+  height: 400px;
+}
+
+@media (max-width: 768px) { 
+  .leaflet-container {
+    height: 200px;
+  }
+ }
+
 @-webkit-keyframes slide-out {
   0% {
     right: 0; 

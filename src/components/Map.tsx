@@ -5,7 +5,7 @@ import {useEffect, useRef} from "react"
 import L from "leaflet"
 import { typeStreet } from "../types/types";
 import { useDispatch, useSelector } from "react-redux";
-import {  setMapDisplayStatus } from "../redux/mainStates";
+import {  setCurrentAddress, setMapDisplayStatus } from "../redux/mainStates";
 import { RootState } from "../redux/store";
 
 function ResetCenterView({position,  getStreetByLatLng}: {position: {lat: number, lng: number}, setPosition: any, getStreetByLatLng: Function}) {  
@@ -44,6 +44,7 @@ function ResetCenterView({position,  getStreetByLatLng}: {position: {lat: number
 
 const Map = () => {
     const addressRef = useRef<HTMLInputElement>(null)!;    
+    const addressElement = addressRef.current
 
     const dispatch = useDispatch();
     const [searchResults, setSearchResults] = useState<typeStreet[]>([])
@@ -116,21 +117,33 @@ const Map = () => {
         .catch((err) => console.log("err: ", err));
     }
 
+  const confirmAddress =() => {
+    if(address) {
+      dispatch(setCurrentAddress({address}))
+      dispatch(setMapDisplayStatus({status: false}))
+    }
+  }
+
   return (
-    <div onClick={() => dispatch(setMapDisplayStatus({status: false}))} className="fullscreen-bg">  
-        <div onClick={(e) => e.stopPropagation()} className="map-container">
-              <div className="map-container-header">
-                  <h1>Where to deliver?</h1>
+    <div onClick={() => dispatch(setMapDisplayStatus({status: false}))} className="fixed z-50 top-0 bg-[rgba(0,0,0,50%)] h-[100vh] w-[100%]">  
+        <div onClick={(e) => e.stopPropagation()} className="bg-accent w-[100%] md:max-w-[60rem] md:mt-[5%]  mx-auto p-4 rounded-md h-[100vh] md:h-auto">
+              <div className="flex items-center justify-between border-b-[1px] py-4 fill-primary">
+                  <h1 className="font-medium text-2xl">Where to deliver?</h1>
                   <svg onClick={() => dispatch(setMapDisplayStatus({status: false}))}  xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40"><path d="m251.333-204.667-46.666-46.666L433.334-480 204.667-708.667l46.666-46.666L480-526.666l228.667-228.667 46.666 46.666L526.666-480l228.667 228.667-46.666 46.666L480-433.334 251.333-204.667Z"/></svg>
               </div>
 
-              <div className="map-container-body split">
-                  <div className="search-container">
+              <div className="flex flex-col-reverse md:flex-row items-stretch justify-between gap-4 py-2">
+                  <div className="flex md:basis-[40%]  flex-col justify-between">
                         <div className="search-address">
+                          {address?.display_name ? 
+                          <p className="max-w-[100%] py-2 mb-2 font-bold border-b-[1px]">{address.display_name}</p>
+                          :
+                          null
+                          }
                         <input 
                           ref={addressRef}
                           placeholder={"Select your location"} 
-                          defaultValue={address ? address.display_name : ""}  onFocus={() => {
+                          onFocus={() => {
                             if(address) {
                               getStreetByName(address.display_name)
                             }
@@ -144,12 +157,16 @@ const Map = () => {
                             console.log(e.target.value)
                             getStreetByName(e.target.value)
                           }} 
+                          className="bg-secondary p-3 rounded flex justify-start gap-1 items-center w-[100%]"
                         />
                         {inputFocusStatus && searchResults.length > 0 ?
-                        <ul className="search-results">                          
+                        <ul className="fixed mt-3 p-3 bg-secondary shadow-xl rounded-md max-w-[40vw] max-h-[10rem] overflow-y-auto">                          
                           {searchResults.map((res) => {
-                            return <li onMouseDown={() => {
-                              setAddress(res)
+                            return <li className="py-2 hover:text-primary hover:cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis" onMouseDown={() => {
+                              setAddress(res);
+                              if(addressRef.current) {
+                                addressElement!.value = "";
+                              }
                               setInputFocusStatus(false)
                             }} key={res.place_id}>{res.display_name}</li>
                           })}
@@ -158,23 +175,25 @@ const Map = () => {
                         null
                         }
                         </div>
-                        <button>Confirm address</button>
+                        <button onClick={confirmAddress} className="font-semibold right-[5%]  bg-primary text-accent p-4 rounded-xl hover:scale-105 transition-all duration-500 bottom-4 w-[100%] mx-auto text-center mt-8">Confirm address</button>
                   </div>
 
-                  <MapContainer center={position} zoom={16} scrollWheelZoom={false}>     
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    {position && (
-                      <Marker position={position}>
-                        <Popup>
-                          A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                      </Marker>
-                    )}
-                    <ResetCenterView getStreetByLatLng={getStreetByLatLng} setPosition={setPosition} position={{lat: position[0], lng: position[1]}} />
-                  </MapContainer>  
+                  <div id="map" className="md:h-[400px] md:w-[400px] max-h-[30%]">
+                    <MapContainer  center={position} zoom={16} scrollWheelZoom={false}>
+                      <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      />
+                      {position && (
+                        <Marker position={position}>
+                          <Popup>
+                            A pretty CSS3 popup. <br /> Easily customizable.
+                          </Popup>
+                        </Marker>
+                      )}
+                      <ResetCenterView getStreetByLatLng={getStreetByLatLng} setPosition={setPosition} position={{lat: position[0], lng: position[1]}} />
+                    </MapContainer>
+                  </div> 
             </div>
         </div>
     </div>  
