@@ -133,7 +133,7 @@ const Map = () => {
               </div>
 
               <div className="flex flex-col-reverse md:flex-row items-stretch justify-between gap-4 py-2">
-                  <div className="flex md:basis-[40%]  flex-col justify-between">
+                  <div className="flex md:basis-[40%]  flex-col justify-between relative">
                         <div className="search-address">
                           {address?.display_name ? 
                           <p className="max-w-[100%] py-2 mb-2 font-bold border-b-[1px]">{address.display_name}</p>
@@ -160,7 +160,7 @@ const Map = () => {
                           className="bg-secondary p-3 rounded flex justify-start gap-1 items-center w-[100%]"
                         />
                         {inputFocusStatus && searchResults.length > 0 ?
-                        <ul className="fixed mt-3 p-3 bg-secondary shadow-xl rounded-md max-w-[40vw] max-h-[10rem] overflow-y-auto">                          
+                        <ul className="fixed mt-3 p-3 bg-secondary shadow-xl rounded-md max-w-[40%] max-h-[10rem] overflow-y-auto">                          
                           {searchResults.map((res) => {
                             return <li className="py-2 hover:text-primary hover:cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis" onMouseDown={() => {
                               setAddress(res);

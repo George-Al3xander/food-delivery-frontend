@@ -16,17 +16,17 @@ interface MainStates {
 
 const initialState: MainStates = {
     currentAddress: {
-        place_id: 103702247,     
-        lat: 42.3636176,
-        lon: 1.8713459,        
-        display_name: 'Das, Cerdanya, Girona, Catalonia, Spain',
+        place_id: 1,     
+        lat: 1,
+        lon: 1,        
+        display_name: '',
         address: {
-            village: 'Das',
-            county: 'Cerdanya',
-            state_district: 'Girona',            
-            state: 'Catalonia',            
-            country: 'Spain',
-            country_code: 'es'
+            village: '',
+            county: '',
+            state_district: '',            
+            state: '',            
+            country: '',
+            country_code: ''
         },       
     },
     cart: [],
