@@ -28,30 +28,67 @@ const OrderPage = () => {
             apartment: ""
         },
         payment: ""
+    });
+
+    const [validStatuses, setValidStatuses] = useState({
+        name: true,
+        phone: true,
+        address: {            
+            entrance: true,
+            floor: true,
+            apartment: true
+        },
+        payment: true
     })
+
+    
    
         
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
+        
+        // if (name == "name") {
+        //     if(value.length > 3 && blankValid.test(value) == true) {
+        //         setValidStatuses({...validStatuses, [name]: true})
+        //     } else {
+        //         setValidStatuses({...validStatuses, [name]: false})
+                
+        //     }
+        // } else if(name == "floor" || name == "entrance" || name == "apartment") {
+
+        // }
         if(name != "floor" && name != "entrance" && name != "apartment") {
-            setFormData({...formData, [name]: value})
+            setFormData({...formData, [name]: value})           
         } else {
             setFormData({...formData, address: {...formData.address, [name]: value}})
         }
         console.log(name)
     }
 
+
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (blankValid.test(formData.name) && formData.name.length > 3 && phoneValid.test(formData.phone) && formData.address.apartment.length > 0 && formData.address.floor.length > 0 && formData.address.entrance.length > 0 && currentAddress.display_name.length > 0
+        if (blankValid.test(formData.name) && formData.name.length >= 3 && phoneValid.test(formData.phone) && formData.address.apartment.length > 0 && formData.address.floor.length > 0 && formData.address.entrance.length > 0 && currentAddress.display_name.length > 0
         ) {
             setFormData({...formData, address: {...formData.address, ...currentAddress}})
+            console.log("we good")
             setValid(true)
-        } else {          
-
+        } else {     
             setValid(false);
         }
     }   
+
+    useEffect(() => {
+        if (blankValid.test(formData.name) && formData.name.length >= 3 && phoneValid.test(formData.phone) && formData.address.apartment.length > 0 && formData.address.floor.length > 0 && formData.address.entrance.length > 0 && currentAddress.display_name.length > 0
+        ) {                      
+            setValid(true)
+        } else {     
+            setValid(false);
+        }
+    },[formData])
+
+
     return(<div className="bg-secondary">
         <div className="w-[min(90%,60rem)] m-auto py-6 flex gap-4 flex-col md:flex-row">
             <form  className="flex flex-col gap-4"  onSubmit={(e) => e.preventDefault()}>
@@ -131,11 +168,8 @@ const OrderPage = () => {
                 <div className="p-4 flex flex-col gap-3">
                     <p className="flex justify-between font-semibold">Total payable: <span>${total}</span></p>    
                     
-                    {valid ? 
-                    null                     
-                    : 
-                    
-                    <p className="mt-8 text-red-600">Fill all the fields marked with star</p>}
+                                         
+                    <p className={`mt-8 text-red-600 transition-all duration-500 ${valid == false ? "opacity-100" : "opacity-0"}`}>Fill all the fields marked with star</p>
                     
                     <button  className={`font-semibold right-[5%]  bg-primary text-accent p-4 rounded-xl hover:scale-105 transition-all duration-500 bottom-4 w-[100%] mx-auto text-center mt-8 ${valid ? "" : "disabled"}`}>Checkout</button>
                     
